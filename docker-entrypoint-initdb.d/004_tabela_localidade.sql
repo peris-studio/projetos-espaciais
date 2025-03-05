@@ -7,10 +7,7 @@ CREATE TABLE public."Localidades" (
     "EnderecoCompleto" TEXT NOT NULL,
     "DataCriacao" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "DataAtualizacao" TIMESTAMP,
-<<<<<<< HEAD
     "DataDelecao" TIMESTAMP,
     "Ativo" BOOLEAN NOT NULL
-=======
     "DataDelecao" TIMESTAMP
->>>>>>> origin/feat/projetos-aeroespaciais-1
 );
