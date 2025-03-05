@@ -1,0 +1,19 @@
+CREATE TABLE public."Testes" (
+    "Id" UUID PRIMARY KEY,
+    "TipoTeste" INTEGER NOT NULL,
+    "Objetivo" VARCHAR(255) NOT NULL,
+    "DataRealizacao" DATE NOT NULL,
+    "Resultado" TEXT NOT NULL,
+    "EquipamentoUtilizado" TEXT NOT NULL,
+    "ConclusaoRecomendacao" TEXT NOT NULL,
+    "DataCriacao" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "DataAtualizacao" TIMESTAMP,
+    "DataDelecao" TIMESTAMP
+    "Ativo" BOOLEAN NOT NULL,
+    "LocalidadeId" UUID NOT NULL,
+    "EquipeId" UUID NOT NULL,
+    "PlataformaId" UUID NOT NULL,
+    CONSTRAINT "FK_Localidades" FOREIGN KEY ("LocalidadeId") REFERENCES public."Localidades"("Id"),
+    CONSTRAINT "FK_Equipes" FOREIGN KEY ("EquipeId") REFERENCES public."Equipes"("Id"),
+    CONSTRAINT "FK_Plataformas" FOREIGN KEY ("PlataformaId") REFERENCES public."Plataformas"("Id")
+);
