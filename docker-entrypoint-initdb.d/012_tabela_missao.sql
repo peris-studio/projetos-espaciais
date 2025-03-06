@@ -17,7 +17,17 @@ CREATE TABLE public."Missoes" (
     "VeiculoId" UUID NOT NULL,
     "PlataformaId" UUID NOT NULL,
     "TesteId" UUID[] NOT NULL,
+    "DocumentoId" UUID[] NOT NULL,
+    "TesteId" UUID[] NOT NULL,
+    "HistoricoAlteracaoId" UUID[] NOT NULL,
+    "LicencaId" UUID[] NOT NULL,
+    "EquipeId" UUID NOT NULL,
     CONSTRAINT "FK_Projetos" FOREIGN KEY ("ProjetoId") REFERENCES public."Projetos"("Id"),
     CONSTRAINT "FK_Veiculos" FOREIGN KEY ("VeiculoId") REFERENCES public."Veiculos"("Id"),
-    CONSTRAINT "FK_Plataformas" FOREIGN KEY ("PlataformaId") REFERENCES public."Plataformas"("Id")
+    CONSTRAINT "FK_Plataformas" FOREIGN KEY ("PlataformaId") REFERENCES public."Plataformas"("Id"),
+    CONSTRAINT "FK_Documentos" FOREIGN KEY ("DocumentoId") REFERENCES public."Documentos"("Id"),
+    CONSTRAINT "FK_Testes" FOREIGN KEY ("TesteId") REFERENCES public."Testes"("Id"),
+    CONSTRAINT "FK_HistoricoAlteracoes" FOREIGN KEY ("HistoricoAlteracaoId") REFERENCES public."HistoricoAlteracoes"("Id"),   
+    CONSTRAINT "FK_Licencas" FOREIGN KEY ("LicencaId") REFERENCES public."Licencas"("Id"),
+    CONSTRAINT "FK_Equipes" FOREIGN KEY ("EquipeId") REFERENCES public."Equipes"("Id")
 );

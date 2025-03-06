@@ -1,5 +1,6 @@
 CREATE TABLE public."Veiculos" (
     "Id" UUID PRIMARY KEY,
+    "Nome" VARCHAR(20),
     "Placa" VARCHAR(255) NOT NULL,
     "Marca" INTEGER NOT NULL,
     "Modelo" VARCHAR(255) NOT NULL,

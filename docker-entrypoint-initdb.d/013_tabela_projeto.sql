@@ -12,14 +12,6 @@ CREATE TABLE public."Projetos" (
     "DataAtualizacao" TIMESTAMP,
     "DataDelecao" TIMESTAMP,
     "Ativo" BOOLEAN NOT NULL,
-    "DocumentoId" UUID[] NOT NULL,
-    "TesteId" UUID[] NOT NULL,
-    "HistoricoAlteracaoId" UUID[] NOT NULL,
-    "LicencaId" UUID[] NOT NULL,
-    "EquipeId" UUID[] NOT NULL,
-    CONSTRAINT "FK_Documentos" FOREIGN KEY ("DocumentoId") REFERENCES public."Documentos"("Id"),
-    CONSTRAINT "FK_Testes" FOREIGN KEY ("TesteId") REFERENCES public."Testes"("Id"),
-    CONSTRAINT "FK_HistoricoAlteracoes" FOREIGN KEY ("HistoricoAlteracaoId") REFERENCES public."HistoricoAlteracoes"("Id"),   
-    CONSTRAINT "FK_Licencas" FOREIGN KEY ("LicencaId") REFERENCES public."Licencas"("Id"),
-    CONSTRAINT "FK_Equipes" FOREIGN KEY ("EquipeId") REFERENCES public."Equipes"("Id")
+    "MissaoId" UUID NOT NULL,
+    CONSTRAINT "FK_Missoes" FOREIGN KEY ("MissaoId") REFERENCES public."Missoes"("Id")
 );

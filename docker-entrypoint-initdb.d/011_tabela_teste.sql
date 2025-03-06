@@ -13,7 +13,9 @@ CREATE TABLE public."Testes" (
     "LocalidadeId" UUID NOT NULL,
     "EquipeId" UUID NOT NULL,
     "PlataformaId" UUID NOT NULL,
+    "HistoricoAlteracaoId" UUID NOT NULL,
     CONSTRAINT "FK_Localidades" FOREIGN KEY ("LocalidadeId") REFERENCES public."Localidades"("Id"),
     CONSTRAINT "FK_Equipes" FOREIGN KEY ("EquipeId") REFERENCES public."Equipes"("Id"),
-    CONSTRAINT "FK_Plataformas" FOREIGN KEY ("PlataformaId") REFERENCES public."Plataformas"("Id")
+    CONSTRAINT "FK_Plataformas" FOREIGN KEY ("PlataformaId") REFERENCES public."Plataformas"("Id"),
+    CONSTRAINT "FK_HistoricoAlteracoes" FOREIGN KEY ("HistoricoAleteracaoId") REFERENCES public."HistoricoAlteracoes"("Id")
 );

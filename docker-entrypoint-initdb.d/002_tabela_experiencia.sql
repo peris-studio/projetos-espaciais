@@ -4,7 +4,7 @@ CREATE TABLE public."Experiencias"(
     "Descricao" VARCHAR(225) NOT NULL,
     "Status" INTEGER NOT NULL
     "DataInicio" DATE NOT NULL,
-    "DataTermino" DATE,
+    "DataConclusao" DATE,
     "DataCriacao" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "DataAtualizacao" TIMESTAMP,
     "DataDelecao" TIMESTAMP

@@ -9,6 +9,4 @@ CREATE TABLE public."HistoricoAlteracoes" (
     "DataDelecao" TIMESTAMP,
     "Ativo" BOOLEAN NOT NULL,
     "EquipeResponsavel" VARCHAR(255) REFERENCES public."Equipes"("Codinome")
-    "DocumentoId" UUID[] NOT NULL,
-    "TesteId" UUID[] NOT NULL,
 );
