@@ -1,7 +1,7 @@
 namespace ProjetosEspaciais.Enums;
 
 
-public enum DepartamentoEquipe
+public enum DepartamentoMembro
 {
     Engenharia,
     OperacoesEspaciais,

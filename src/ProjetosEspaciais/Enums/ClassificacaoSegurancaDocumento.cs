@@ -1,6 +1,6 @@
 namespace ProjetosEspaciais.Enums;
 
-public enum ClassificacaoSeguranca
+public enum ClassificacaoSegurancaDocumento
 {
     Publico,          // Documento acessível ao público em geral.
     Restrito,         // Apenas equipes autorizadas podem acessar.
