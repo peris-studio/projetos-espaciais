@@ -1,10 +1,9 @@
 CREATE TABLE public."Documentos" (
     "Id" UUID PRIMARY KEY,
     "Titulo" VARCHAR(255) NOT NULL,
-    "Tipo" INTEGER NOT NULL,
+    "TipoArquivo" INTEGER NOT NULL,
     "Versao" VARCHAR(255) NOT NULL,
-    "Arquivo" INTEGER NOT NULL,
-    "Status" INTEGER NOT NULL,
+    "StatusDocumento" INTEGER NOT NULL,
     "ClassificacaoSeguranca" INTEGER NOT NULL,
     "DataCriacao" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "DataAtualizacao" TIMESTAMP,
