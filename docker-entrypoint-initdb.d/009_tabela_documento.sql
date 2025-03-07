@@ -4,7 +4,7 @@ CREATE TABLE public."Documentos" (
     "TipoArquivo" INTEGER NOT NULL,
     "Versao" VARCHAR(255) NOT NULL,
     "StatusDocumento" INTEGER NOT NULL,
-    "ClassificacaoSeguranca" INTEGER NOT NULL,
+    "ClassificacaoSegurancaDocumento" INTEGER NOT NULL,
     "DataCriacao" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "DataAtualizacao" TIMESTAMP,
     "DataDelecao" TIMESTAMP,

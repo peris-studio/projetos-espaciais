@@ -5,7 +5,7 @@ CREATE TABLE public."Plataformas" (
     "TipoPlataforma" INTEGER NOT NULL,
     "CoordenadaLatitude" DECIMAL NOT NULL,
     "CoordenadaAltitude" DECIMAL NOT NULL,
-    "Status" INTEGER NOT NULL,
+    "StatusPlataforma" INTEGER NOT NULL,
     "DataCriacao" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "DataAtualizacao" TIMESTAMP,
     "DataDelecao" TIMESTAMP,

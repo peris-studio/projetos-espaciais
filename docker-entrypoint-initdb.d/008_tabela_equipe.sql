@@ -2,7 +2,6 @@ CREATE TABLE public."Equipes" (
     "Id" UUID PRIMARY KEY,
     "Codinome" VARCHAR(255) NOT NULL,
     "Funcao" TEXT NOT NULL,
-    "Departamento" INTEGER NOT NULL,
     "DataCriacao" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "DataAtualizacao" TIMESTAMP,
     "DataDelecao" TIMESTAMP,

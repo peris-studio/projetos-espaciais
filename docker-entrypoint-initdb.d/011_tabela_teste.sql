@@ -8,7 +8,7 @@ CREATE TABLE public."Testes" (
     "ConclusaoRecomendacao" TEXT NOT NULL,
     "DataCriacao" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "DataAtualizacao" TIMESTAMP,
-    "DataDelecao" TIMESTAMP
+    "DataDelecao" TIMESTAMP,
     "Ativo" BOOLEAN NOT NULL,
     "LocalidadeId" UUID NOT NULL,
     "EquipeId" UUID NOT NULL,
@@ -17,5 +17,5 @@ CREATE TABLE public."Testes" (
     CONSTRAINT "FK_Localidades" FOREIGN KEY ("LocalidadeId") REFERENCES public."Localidades"("Id"),
     CONSTRAINT "FK_Equipes" FOREIGN KEY ("EquipeId") REFERENCES public."Equipes"("Id"),
     CONSTRAINT "FK_Plataformas" FOREIGN KEY ("PlataformaId") REFERENCES public."Plataformas"("Id"),
-    CONSTRAINT "FK_HistoricoAlteracoes" FOREIGN KEY ("HistoricoAleteracaoId") REFERENCES public."HistoricoAlteracoes"("Id")
+    CONSTRAINT "FK_HistoricoAlteracoes" FOREIGN KEY ("HistoricoAlteracaoId") REFERENCES public."HistoricoAlteracoes"("Id")
 );

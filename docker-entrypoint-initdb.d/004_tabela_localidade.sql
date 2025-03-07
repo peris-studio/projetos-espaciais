@@ -9,5 +9,4 @@ CREATE TABLE public."Localidades" (
     "DataAtualizacao" TIMESTAMP,
     "DataDelecao" TIMESTAMP,
     "Ativo" BOOLEAN NOT NULL
-    "DataDelecao" TIMESTAMP
 );

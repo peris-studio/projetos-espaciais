@@ -1,6 +1,6 @@
 CREATE TABLE public."Licencas" (
     "Id" UUID PRIMARY KEY,
-    "Tipo" INTEGER NOT NULL,
+    "TipoLicenca" INTEGER NOT NULL,
     "Nome" VARCHAR(225) NOT NULL,
     "NumeroLicenca" VARCHAR(255) NOT NULL,
     "OrgaoEmissor" VARCHAR(255) NOT NULL,
