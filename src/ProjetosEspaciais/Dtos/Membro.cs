@@ -1,3 +1,11 @@
 namespace ProjetosEspaciais.Dtos;
 
-public record MembroDto(string NomeCompleto, CargoMembro CargoMembro, string funcao, string especialidade, DepartamentoMembro DepartamentoMembro, string Identificador, string Senha, TipoGenero TipoGenero, Guid Id = default);
+public record MembroDto(string NomeCompleto,
+                        CargoMembro CargoMembro,
+                        string Funcao,
+                        string Especialidade,
+                        string Identificador,
+                        string Senha,
+                        Genero Genero,
+                        DateOnly DataNascimento,
+                        Guid Id = default);

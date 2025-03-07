@@ -1,3 +1,8 @@
 namespace ProjetosEspaciais.Dtos;
 
-public record HistoricoAlteracaoDto(TipoAlteracao TipoAlteracao, string Descricao, string Motivacao, NivelImpacto NivelImpacto, Guid EquipeId, Guid Id = default);
+public record HistoricoAlteracaoDto(TipoAlteracao TipoAlteracao,
+                                    string Descricao,
+                                    string Motivacao,
+                                    NivelImpactoAlteracao NivelImpactoAlteracao,
+                                    Guid EquipeId,
+                                    Guid Id = default);
