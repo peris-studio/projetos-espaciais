@@ -10,8 +10,8 @@ public class Projeto
     public DateOnly DataTermino { get; set; }
     public decimal Orcamento { get; set; }
     public FaseAtual FaseAtual { get; set; }
-    //    public Guid GerenteTorreId { get; set; } // Referência ao ID do membro
-    //    public Membro GerenteTorre { get; set; } // Propriedade de navegação opcional
+    public Guid GerenteTorreId { get; set; } // Referência ao ID do membro
+    public Membro Membro { get; set; } // Propriedade de navegação opcional
     public DateTime DataCriacao { get; set; }
     public DateTime? DataAtualizacao { get; set; }
     public DateTime? DataDelecao { get; set; }
@@ -24,7 +24,7 @@ public class Projeto
                 Status: {Status}
                 Orçamento: {Orcamento}
                 Fase Atual: {FaseAtual}
-                Gerente de Torre: {}
+                Gerente de Torre: {GerenteTorreId}
                 Data de Início: {DataInicio}
                 Data Prevista de Término: {DataTermino}
                 -

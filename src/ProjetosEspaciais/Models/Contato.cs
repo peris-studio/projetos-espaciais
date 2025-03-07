@@ -7,13 +7,13 @@ public class Contato
     public string Contato { get; set; }
     public bool Principal { get; set; }
     public DateTime DataCriacao { get; set; }
-    public DateTime DataAtualizacao { get; set; }
-    public DateTime DataDelecao { get; set; }
+    public DateTime? DataAtualizacao { get; set; }
+    public DateTime? DataDelecao { get; set; }
     public bool Ativo { get; set; }
 
     public override string ToString()
     {
-        string principal = Principal ? "Sim" : "Não"
+        string principal = Principal ? "Sim" : "Não";
         return $@"
                 Tipo de Contato: {TipoContato}
                 Contato: {Contato}
