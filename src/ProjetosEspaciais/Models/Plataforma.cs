@@ -8,7 +8,7 @@ public class Plataforma
     public TipoPlataforma TipoPlataforma { get; set; }
     public decimal CoordenadaLatitude { get; set; }
     public decimal CoordenadaAltitude { get; set; }
-    public StatusPlataforma Status { get; set; }
+    public StatusPlataforma StatusPlataforma { get; set; }
     public DateTime DataCriacao { get; set; }
     public DateTime? DataAtualizacao { get; set; }
     public DateTime? DataDelecao { get; set; }
@@ -23,7 +23,7 @@ public class Plataforma
             Tipo de Plataforma: {TipoPlataforma}
             Coordenada Latitude: {CoordenadaLatitude}
             Coordenada Altitude: {CoordenadaAltitude}
-            Status: {Status}
+            Status: {StatusVeiculo}
             Data de Criação: {DataCriacao}
             Data de Atualização: {DataAtualizacao?.ToString() ?? "N/A"}
             Data de Deleção: {DataDelecao?.ToString() ?? "N/A"}

@@ -4,13 +4,12 @@ public class Membro
 {
     public Guid Id { get; set; }
     public string NomeCompleto { get; set; }
-    public CargoMembro CargoMembro { get; set; } // Enum
+    public CargoMembro CargoMembro { get; set; }
     public string Funcao { get; set; }
     public string Especialidade { get; set; }
-    public DepartamentoMembro DepartamentoMembro { get; set; } // Enum
     public string Identificador { get; set; }
     public string Senha { get; set; }
-    public TipoGenero Genero { get; set; } // Enum
+    public Genero Genero { get; set; }
     public DateOnly DataNascimento { get; set; }
     public DateTime DataCriacao { get; set; }
     public DateTime? DataAtualizacao { get; set; }
@@ -25,7 +24,6 @@ public class Membro
                 Cargo: {CargoMembro}
                 Função: {Funcao}
                 Especialidade: {Especialidade}
-                Departamento: {DepartamentoMembro}
                 Identificador: {Identificador}
                 Senha: {Senha}
                 Gênero: {Genero}

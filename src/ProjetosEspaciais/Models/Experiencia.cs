@@ -24,7 +24,7 @@ public class Experiencia
                 Data de Previsao e/ou Término: {DataTermino}
                 Data de Criação: {DataCriacao}
                 Data da Última Atualização {DataAtualizacao}
-                Data de Delecao: {DataDelecao}
+                Data de Deleção: {DataDelecao}
                 ";
     }
 }

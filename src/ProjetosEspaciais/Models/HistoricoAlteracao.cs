@@ -10,8 +10,8 @@ public class HistoricoAlteracao
     public DateTime? DataAtualizacao { get; set; }
     public DateTime? DataDelecao { get; set; }
     public bool Ativo { get; set; }
-    public Guid EquipeResponsavel { get; set; }
-    public Equipe EquipeId { get; set; }
+    public Guid EquipeId { get; set; }
+    public Equipe Equipe { get; set; }
 
     public override string ToString()
     {
@@ -25,7 +25,7 @@ public class HistoricoAlteracao
                 Data de Atualização: {DataAtualizacao}
                 Data de Deleção: {DataDelecao}
                 Ativo: {Ativo}
-                Equipe Responsável: {EquipeResponsavel}
+                Equipe Responsável: {EquipeId}
             ";
     }
 }

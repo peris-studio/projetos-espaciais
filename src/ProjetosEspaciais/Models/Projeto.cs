@@ -5,7 +5,7 @@ public class Projeto
     public Guid Id { get; set; }
     public string Nome { get; set; }
     public string Descricao { get; set; }
-    public StatusProjeto Status { get; set; }
+    public StatusProjeto StatusProjeto { get; set; }
     public DateOnly DataInicio { get; set; }
     public DateOnly DataTermino { get; set; }
     public decimal Orcamento { get; set; }
@@ -21,7 +21,7 @@ public class Projeto
         return $@"
                 Nome: {Nome}
                 Descricao: {Descricao}
-                Status: {Status}
+                Status: {StatusProjeto}
                 Orçamento: {Orcamento}
                 Fase Atual: {FaseAtual}
                 Gerente de Torre: {GerenteTorreId}
