@@ -5,7 +5,7 @@ CREATE TABLE public."Missoes" (
     "TipoMissao" INTEGER NOT NULL,
     "Objetivo" TEXT NOT NULL,
     "Status" INTEGER NOT NULL,
-    "DuracaoEstimada" INTEGER NOT NULL,
+    "DuracaoEstimada" VARCHAR(225) NOT NULL,
     "CustoEstimado" DECIMAL NOT NULL,
     "DataInicio" DATE NOT NULL,
     "DataTermino" DATE,
