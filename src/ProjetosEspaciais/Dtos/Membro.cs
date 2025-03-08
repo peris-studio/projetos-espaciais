@@ -1,7 +1,6 @@
 namespace ProjetosEspaciais.Dtos;
 
 public record MembroDto(string NomeCompleto,
-                        CargoMembro CargoMembro,
                         string Funcao,
                         string Especialidade,
                         string Identificador,
