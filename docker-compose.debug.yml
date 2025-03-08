@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  projetosespaciais:
+    image: projetosespaciais
+    build:
+      context: .
+      dockerfile: src/ProjetosEspaciais/Dockerfile
+      args:
+        - configuration=Debug
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw

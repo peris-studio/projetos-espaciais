@@ -1,0 +1,40 @@
+services:
+  projetos-espaciais:
+    build:
+      context: .
+      dockerfile: src/ProjetosEspaciais/Dockerfile
+    image: projetos-espaciais:latest
+    container_name: projetos-espaciais
+    ports:
+      - "8080:8080"
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=projetos-db;Username=user;Password=password"
+    depends_on:
+      - db
+    networks:
+      - loja-network
+
+  db:
+    image: postgres
+    hostname: db # nome fixo do container dentro da rede
+    container_name: projetos-db
+    restart: always # serve para reiniciar automaticamente caso pare
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_DB: projetos-db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    networks:
+      - loja-network
+
+networks:
+  loja-network:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local
