@@ -18,10 +18,10 @@ public class TesteMap : IEntityTypeConfiguration<Teste>
 
               builder.HasOne(id => id.Plataforma)
                      .WithMany()
-                     .HasOne(id => id.PlataformaId);
+                     .HasForeignKey(id => id.PlataformaId);
 
               builder.HasOne(id => id.Equipe)
                      .WithMany()
-                     .HasOne(id => id.EquipeId);
+                     .HasForeignKey(id => id.EquipeId);
        }
 }
