@@ -9,19 +9,6 @@ builder.Services.AddSwaggerGen(c =>
 
 // Configurando o DbContext com a string de conexão
 builder.Services.AddDbContext<ApplicationDbContext>();
-builder.Services.AddScoped<ContatoService>();
-builder.Services.AddScoped<DocumentoService>();
-builder.Services.AddScoped<EquipeService>();
-builder.Services.AddScoped<ExperienciaService>();
-builder.Services.AddScoped<HistoricoAlteracaoService>();
-builder.Services.AddScoped<LicencaService>();
-builder.Services.AddScoped<LocalidadeService>();
-builder.Services.AddScoped<MembroService>();
-builder.Services.AddScoped<MissaoService>();
-builder.Services.AddScoped<PlataformaService>();
-builder.Services.AddScoped<ProjetoService>();
-builder.Services.AddScoped<TesteService>();
-builder.Services.AddScoped<VeiculoService>();
 
 // Adicionando Health Checks
 builder.Services.AddHealthChecks();
@@ -44,15 +31,13 @@ app.MapHealthChecks("/healthcheck");
 
 // Registre os módulos de endpoints aqui
 app.MapContatoEndpoints();
-app.MapExperienciaEndpoints();
-app.MapLicencaoEndpoints();
+app.MapLicencaEndpoints();
 app.MapLocalidadeEndpoints();
 app.MapMembroEndpoints();
 app.MapPlataformaEndpoints();
 app.MapVeiculoEndpoints();
 app.MapEquipeEndpoints();
 app.MapDocumentoEndpoints();
-app.MapHistoricoAlteracaoEndpoints();
 app.MapTesteEndpoints();
 app.MapMissaoEndpoints();
 app.MapProjetoEndpoints();
