@@ -1,3 +1,3 @@
 namespace ProjetosEspaciais.Dtos;
 
-public record ContatoDto(TipoContato TipoContato, string Contato, bool Principal, Guid Id = default);
+public record ContatoDto(TipoContato TipoContato, string EnderecoContato, bool Principal, Guid Id = default);
