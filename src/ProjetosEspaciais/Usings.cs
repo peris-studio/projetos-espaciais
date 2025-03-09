@@ -1,13 +1,14 @@
+global using System.Collections.Generic;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Routing;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
-global using ProjetosEspaciais;
+//global using ProjetosEspaciais;
 global using ProjetosEspaciais.Context;
 global using ProjetosEspaciais.Dtos;
 global using ProjetosEspaciais.Enums;
 global using ProjetosEspaciais.Mappings;
 global using ProjetosEspaciais.Models;
 global using ProjetosEspaciais.Modules;
-global using ProjetosEspaciais.Services;
