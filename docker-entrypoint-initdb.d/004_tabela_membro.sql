@@ -13,8 +13,9 @@ CREATE TABLE public."Membros"(
     "Ativo" BOOLEAN NOT NULL
 );
 
-    ('60cc1b17-6bf7-4058-9c0e-7ce194d3559d', 'Equipe Falcão', 'Lançamento de Veículos Espaciais', CURRENT_TIMESTAMP, NULL, NULL, TRUE, '60cc1b17-6bf7-4058-9c0e-7ce194d3559d', '60cc1b17-6bf7-4058-9c0e-7ce194d3559d', '60cc1b17-6bf7-4058-9c0e-7ce194d3559d'),
-    ('4c6fb5e9-8073-4bfe-8095-49c173108983', 'Equipe Atlas', 'Pesquisas Científicas Espaciais', CURRENT_TIMESTAMP, NULL, NULL, TRUE, '257c9a52-f4b7-4e29-af5e-7406ff11c6e2', '4c6fb5e9-8073-4bfe-8095-49c173108983', '4c6fb5e9-8073-4bfe-8095-49c173108983'),
-    ('f2dd29b7-8592-4166-9f09-fb57dd1cb83d', 'Equipe Pioneira', 'Exploração de Marte', CURRENT_TIMESTAMP, NULL, NULL, TRUE, '257c9a52-f4b7-4e29-af5e-7406ff11c6e2', 'f2dd29b7-8592-4166-9f09-fb57dd1cb83d', 'f2dd29b7-8592-4166-9f09-fb57dd1cb83d'),
-    ('a999c838-0c75-4d70-8f64-d560cac90965', 'Equipe Vanguarda', 'Tecnologia Avançada para Missões Espaciais', CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'a999c838-0c75-4d70-8f64-d560cac90965', 'a999c838-0c75-4d70-8f64-d560cac90965', 'a999c838-0c75-4d70-8f64-d560cac90965'),
-    ('257c9a52-f4b7-4e29-af5e-7406ff11c6e2', 'Equipe Comando Espacial', 'Gestão de Operações Espaciais', CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'f2dd29b7-8592-4166-9f09-fb57dd1cb83d', '257c9a52-f4b7-4e29-af5e-7406ff11c6e2', '257c9a52-f4b7-4e29-af5e-7406ff11c6e2');
+INSERT INTO public."Membros" ("Id", "NomeCompleto", "Funcao", "Especialidade", "Identificador", "Senha", "Genero", "DataNascimento", "DataCriacao", "DataAtualizacao", "DataDelecao", "Ativo")
+VALUES
+    ('a3d8f9b1-5c72-4a1e-987d-0b4c6d2e1f7a', 'Elon Musk', 'CEO', 'Engenharia Espacial', 'E001', 'SpaceX2024', 0, '1971-06-28', CURRENT_TIMESTAMP, NULL, NULL, TRUE),
+    ('b2e4c6a8-9d3f-4a7b-85c1-1f8e5d3b0a9c', 'Gwynne Shotwell', 'COO', 'Gestão de Operações', 'G002', 'FalconHeavy', 1, '1963-11-23', CURRENT_TIMESTAMP, NULL, NULL, TRUE),
+    ('c7f8d2a4-1e6b-49c3-85d0-3b9a4e6f2c1d', 'Jeff Bezos', 'Fundador', 'Exploração Lunar', 'J003', 'BlueOrigin', 0, '1964-01-12', CURRENT_TIMESTAMP, NULL, NULL, TRUE),
+    ('d5a9b3e7-2f4c-41d8-93a6-4c8e1f7d0b2a', 'Bill Nelson', 'Administrador', 'Política Espacial', 'B004', 'NASA2024', 0, '1942-09-29', CURRENT_TIMESTAMP, NULL, NULL, TRUE);

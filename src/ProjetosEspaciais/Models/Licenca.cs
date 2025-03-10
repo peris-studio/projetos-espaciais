@@ -6,16 +6,17 @@ public class Licenca
 {
     public Guid Id { get; set; }
     public TipoLicenca TipoLicenca { get; set; }
-    public string? Nome { get; set; }
-    public string? NumeroLicenca { get; set; }
-    public string? OrgaoEmissor { get; set; }
+    public string Nome { get; set; }
+    public string NumeroLicenca { get; set; }
+    public string OrgaoEmissor { get; set; }
     public DateOnly DataEmissao { get; set; }
     public DateOnly DataValidade { get; set; }
-    public string? RequisitoConformidade { get; set; }
+    public string RequisitoConformidade { get; set; }
     public DateTime DataCriacao { get; set; }
     public DateTime? DataAtualizacao { get; set; }
     public DateTime? DataDelecao { get; set; }
     public bool Ativo { get; set; }
+    public List<Guid>? MissaoLicencas { get; set; }
 
     public static Licenca Inserir(TipoLicenca tipoLicenca,
                                    string nome,
@@ -24,6 +25,7 @@ public class Licenca
                                    DateOnly dataEmissao,
                                    DateOnly dataValidade,
                                    string requisitoConformidade,
+                                   List<Guid>? missaoLicencas = null,
                                    Guid id = default)
     {
         if (string.IsNullOrEmpty(nome) ||
@@ -52,7 +54,8 @@ public class Licenca
             DataValidade = dataValidade,
             RequisitoConformidade = requisitoConformidade,
             DataCriacao = DateTime.UtcNow,
-            Ativo = true
+            Ativo = true,
+            MissaoLicencas = missaoLicencas ?? []
         };
     }
 

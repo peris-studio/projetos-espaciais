@@ -11,72 +11,29 @@ public class MissaoMap : IEntityTypeConfiguration<Missao>
                      .IsRequired()
                      .ValueGeneratedNever();  // Chave autoincrementável (não gerada automaticamente)
 
-              builder.Property(m => m.Codinome)
-                     .IsRequired();
-
-              builder.Property(m => m.Descricao)
-                     .IsRequired();
-
-              builder.Property(m => m.Objetivo)
-                     .IsRequired();
-
-              builder.Property(m => m.DuracaoEstimada)
-                     .IsRequired();
-
-              builder.Property(m => m.StatusMissao)
-                     .IsRequired();
-
-              builder.Property(m => m.TipoMissao)
-                     .IsRequired();
-
-              builder.Property(m => m.DataCriacao)
-                     .IsRequired();
-
-              builder.Property(m => m.Ativo)
-                     .IsRequired();
 
               // Relacionamentos com outras entidades
-              builder.HasOne(m => m.Veiculo)  // Relacionamento com Veiculo
-                     .WithMany()  // Supondo que Veiculo tenha uma lista de Missao
+              builder.HasOne(m => m.Veiculo)
+                     .WithMany()  // Um veículo pode estar associado a várias missões
                      .HasForeignKey(m => m.VeiculoId)
-                     .OnDelete(DeleteBehavior.Restrict);  // Define o comportamento de exclusão
+                     .IsRequired();
 
-              builder.HasOne(m => m.Plataforma)  // Relacionamento com Plataforma
-                     .WithMany()  // Supondo que Plataforma tenha uma lista de Missao
+              builder.HasOne(m => m.Plataforma)
+                     .WithMany()  // Uma plataforma pode estar associada a várias missões
                      .HasForeignKey(m => m.PlataformaId)
-                     .OnDelete(DeleteBehavior.Restrict);
+                     .IsRequired();
 
-              builder.HasOne(m => m.Equipe)  // Relacionamento com Equipe
-                     .WithMany()  // Supondo que Equipe tenha uma lista de Missao
+              builder.HasOne(m => m.Equipe)
+                     .WithMany()  // Uma equipe pode estar associada a várias missões
                      .HasForeignKey(m => m.EquipeId)
-                     .OnDelete(DeleteBehavior.Restrict);
+                     .IsRequired();
 
-              // Relacionamentos com listas de entidades
-              builder.HasMany(m => m.Testes)  // Relacionamento com Testes
-                     .WithMany()  // Supondo que Teste tenha uma lista de Missao
-                     .UsingEntity<Dictionary<string, object>>(
-                         "MissaoTeste",  // Nome da tabela de junção
-                         j => j.HasOne<Teste>().WithMany().HasForeignKey("TesteId"),
-                         j => j.HasOne<Missao>().WithMany().HasForeignKey("MissaoId")
-                     );
+              builder.Ignore(m => m.MissaoLicencas);
 
-              builder.HasMany(m => m.Documentos)  // Relacionamento com Documentos
-                     .WithMany()  // Supondo que Documento tenha uma lista de Missao
-                     .UsingEntity<Dictionary<string, object>>(
-                         "MissaoDocumento",  // Nome da tabela de junção
-                         j => j.HasOne<Documento>().WithMany().HasForeignKey("DocumentoId"),
-                         j => j.HasOne<Missao>().WithMany().HasForeignKey("MissaoId")
-                     );
-
-              builder.HasMany(m => m.Licencas)  // Relacionamento com Licencas
-                     .WithMany()  // Supondo que Licenca tenha uma lista de Missao
-                     .UsingEntity<Dictionary<string, object>>(
-                         "MissaoLicenca",  // Nome da tabela de junção
-                         j => j.HasOne<Licenca>().WithMany().HasForeignKey("LicencaId"),
-                         j => j.HasOne<Missao>().WithMany().HasForeignKey("MissaoId")
-                     );
-
-              // Configuração para o filtro de registros ativos
-              builder.HasQueryFilter(m => m.Ativo);
+              // // Relacionamento com MissaoLicencas (muitos para muitos)
+              // builder.HasMany(m => m.MissaoLicencas)
+              //        .WithOne()  // A tabela de junção vai se referir tanto a Missao quanto a Licenca
+              //        .HasForeignKey(ml => ml.MissaoId)  // Definindo a chave estrangeira para Missao
+              //        .OnDelete(DeleteBehavior.Cascade);  // Apaga as entradas na tabela de junção ao deletar Missao
        }
 }

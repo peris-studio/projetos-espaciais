@@ -41,6 +41,7 @@ public static class LicencaModule
                     novaLicenca.DataEmissao,
                     novaLicenca.DataValidade,
                     novaLicenca.RequisitoConformidade,
+                    novaLicenca.MissaoLicencas,
                     novaLicenca.Id
                 );
 
@@ -78,6 +79,7 @@ public static class LicencaModule
                 DataEmissao: licenca.DataEmissao,
                 DataValidade: licenca.DataValidade,
                 RequisitoConformidade: licenca.RequisitoConformidade,
+                MissaoLicencas: licenca.MissaoLicencas,
                 Id: licenca.Id
             );
 
@@ -97,6 +99,7 @@ public static class LicencaModule
                 DataEmissao: licenca.DataEmissao,
                 DataValidade: licenca.DataValidade,
                 RequisitoConformidade: licenca.RequisitoConformidade,
+                MissaoLicencas: licenca.MissaoLicencas,
                 Id: licenca.Id
             )).ToList();
 

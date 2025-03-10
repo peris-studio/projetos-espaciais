@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen(c =>
 // Configurando o DbContext com a string de conexão
 builder.Services.AddDbContext<ApplicationDbContext>();
 
-// Adicionando Health Checks
+// Adicionando Health 
 builder.Services.AddHealthChecks();
 
 // Criando a aplicação

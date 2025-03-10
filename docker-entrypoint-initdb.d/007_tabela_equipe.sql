@@ -15,8 +15,7 @@ CREATE TABLE public."Equipes" (
 
 INSERT INTO public."Equipes" ("Id", "Codinome", "Funcao", "DataCriacao", "DataAtualizacao", "DataDelecao", "Ativo", "Lider", "MembroId", "ContatoId")
 VALUES
-    ('60cc1b17-6bf7-4058-9c0e-7ce194d3559d', 'Equipe Falcão', 'Lançamento de Veículos Espaciais', CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'bda25244-669e-4f38-9fd8-8041bcffad79', '60cc1b17-6bf7-4058-9c0e-7ce194d3559d', '84bae1d3-6463-4e05-958b-3e531038eea3'),
-    ('4c6fb5e9-8073-4bfe-8095-49c173108983', 'Equipe Atlas', 'Pesquisas Científicas Espaciais', CURRENT_TIMESTAMP, NULL, NULL, TRUE, '257c9a52-f4b7-4e29-af5e-7406ff11c6e2', '4c6fb5e9-8073-4bfe-8095-49c173108983', '78dd2ca2-10e1-4185-8d43-0a964fdee0af'),
-    ('f2dd29b7-8592-4166-9f09-fb57dd1cb83d', 'Equipe Pioneira', 'Exploração de Marte', CURRENT_TIMESTAMP, NULL, NULL, TRUE, '257c9a52-f4b7-4e29-af5e-7406ff11c6e2', 'f2dd29b7-8592-4166-9f09-fb57dd1cb83d', '936800104-4b7a-4f84-b702-bdceae10bd61'),
-    ('a999c838-0c75-4d70-8f64-d560cac90965', 'Equipe Vanguarda', 'Tecnologia Avançada para Missões Espaciais', CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'a999c838-0c75-4d70-8f64-d560cac90965', 'a999c838-0c75-4d70-8f64-d560cac90965', '936694527-3a5b-4d56-b1f1-d0806fe8eaf2'),
-    ('257c9a52-f4b7-4e29-af5e-7406ff11c6e2', 'Equipe Comando Espacial', 'Gestão de Operações Espaciais', CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'f2dd29b7-8592-4166-9f09-fb57dd1cb83d', '257c9a52-f4b7-4e29-af5e-7406ff11c6e2', '992569835-d99b-4e74-a40b-23f8d0c9a6a9');
+    -- Equipes usadas em Documentos (UUIDs corrigidos)
+    ('a96cfdd9-ce1e-41e7-9483-1691e87c8780', 'Equipe Falcão', 'Lançamento de Veículos Espaciais', CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'c7f8d2a4-1e6b-49c3-85d0-3b9a4e6f2c1d', 'c7f8d2a4-1e6b-49c3-85d0-3b9a4e6f2c1d', '60cc1b17-6bf7-4058-9c0e-7ce194d3559d'),
+    ('97dbd619-ae50-4a3e-ac97-926b95f251c2', 'Equipe Pioneira', 'Exploração de Marte', CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'a3d8f9b1-5c72-4a1e-987d-0b4c6d2e1f7a', 'a3d8f9b1-5c72-4a1e-987d-0b4c6d2e1f7a', 'f2dd29b7-8592-4166-9f09-fb57dd1cb83d'),
+    ('ac1131b5-ccd1-46ef-9a07-05868e8d46a3', 'Equipe Atlas', 'Pesquisas Científicas Espaciais', CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'd5a9b3e7-2f4c-41d8-93a6-4c8e1f7d0b2a', 'd5a9b3e7-2f4c-41d8-93a6-4c8e1f7d0b2a', '4c6fb5e9-8073-4bfe-8095-49c173108983');

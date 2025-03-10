@@ -77,12 +77,12 @@ namespace ProjetosEspaciais.Modules
                         return Results.BadRequest("Equipe não encontrada.");
                     }
 
-                    novaMissao = novaMissao with
-                    {
-                        TestesIds = novaMissao.TestesIds ?? new List<Guid>(),
-                        DocumentosIds = novaMissao.DocumentosIds ?? new List<Guid>(),
-                        LicencasIds = novaMissao.LicencasIds ?? new List<Guid>()
-                    };
+                    // novaMissao = novaMissao with
+                    // {
+                    //     TestesIds = novaMissao.TestesIds ?? new List<Guid>(),
+                    //     DocumentosIds = novaMissao.DocumentosIds ?? new List<Guid>(),
+                    //     LicencasIds = novaMissao.LicencasIds ?? new List<Guid>()
+                    // };
 
                     var missao = Missao.Inserir(
                         novaMissao.Codinome,
@@ -93,12 +93,26 @@ namespace ProjetosEspaciais.Modules
                         novaMissao.DuracaoEstimada,
                         novaMissao.CustoEstimado,
                         novaMissao.DataInicio,
-                        novaMissao.DataTermino ?? DateOnly.MinValue, // Aqui, DataTermino é do tipo DateOnly
+                        novaMissao.DataTermino,
                         novaMissao.VeiculoId,
                         novaMissao.PlataformaId,
-                        novaMissao.EquipeId
+                        novaMissao.EquipeId,
+                        novaMissao.MissaoLicencas
                     );
 
+                    // Adiciona as Licenças associadas à missão
+                    if (novaMissao.MissaoLicencas.Any())
+                    {
+                        var licencas = await context.Licencas
+                                                    .Where(l => novaMissao.MissaoLicencas.Contains(l.Id))
+                                                    .ToListAsync();
+
+                        foreach (var licenca in licencas)
+                        {
+                            var missaoLicencas = MissaoLicencas.Inserir(missao.Id, licenca.Id);
+                            context.MissaoLicencas.Add(missaoLicencas);
+                        }
+                    }
 
                     context.Missoes.Add(missao);
                     await context.SaveChangesAsync();
@@ -123,14 +137,7 @@ namespace ProjetosEspaciais.Modules
                     return Results.BadRequest("Id inválido.");
                 }
 
-                var missao = await context.Missoes
-                    .Include(m => m.Veiculo)
-                    .Include(m => m.Plataforma)
-                    .Include(m => m.Equipe)
-                    .Include(m => m.Testes)
-                    .Include(m => m.Documentos)
-                    .Include(m => m.Licencas)
-                    .FirstOrDefaultAsync(m => m.Id == id);
+                var missao = await context.Missoes.FirstOrDefaultAsync(m => m.Id == id);
 
                 if (missao is null)
                 {
@@ -150,10 +157,8 @@ namespace ProjetosEspaciais.Modules
                     VeiculoId: missao.VeiculoId,
                     PlataformaId: missao.PlataformaId,
                     EquipeId: missao.EquipeId,
-                    TestesIds: missao.Testes.Select(t => t.Id).ToList(), // Passando lista de TestesIds
-                    DocumentosIds: missao.Documentos.Select(d => d.Id).ToList(), // Passando lista de DocumentosIds
-                    LicencasIds: missao.Licencas.Select(l => l.Id).ToList(), // Passando lista de LicencasIds
-                    Id: missao.Id
+                    Id: missao.Id,
+                    MissaoLicencas: missao.MissaoLicencas
                 );
 
 
@@ -163,36 +168,72 @@ namespace ProjetosEspaciais.Modules
             // L I S T A R
             group.MapGet("/listar", async ([FromServices] ApplicationDbContext context) =>
             {
-                var missoes = await context.Missoes
-                    .Include(m => m.Veiculo)
-                    .Include(m => m.Plataforma)
-                    .Include(m => m.Equipe)
-                    .Include(m => m.Testes)
-                    .Include(m => m.Documentos)
-                    .Include(m => m.Licencas)
-                    .ToListAsync();
+                var missoes = await context.Missoes.ToListAsync();
 
-                var missoesDto = missoes.Select(missao => new MissaoDto(
-                    Codinome: missao.Codinome,
-                    Descricao: missao.Descricao,
-                    TipoMissao: missao.TipoMissao,
-                    Objetivo: missao.Objetivo,
-                    StatusMissao: missao.StatusMissao,
-                    DuracaoEstimada: missao.DuracaoEstimada,
-                    CustoEstimado: missao.CustoEstimado,
-                    DataInicio: missao.DataInicio,
-                    DataTermino: missao.DataTermino, // Passando o DataTermino aqui corretamente
-                    VeiculoId: missao.VeiculoId,
-                    PlataformaId: missao.PlataformaId,
-                    EquipeId: missao.EquipeId,
-                    TestesIds: missao.Testes.Select(t => t.Id).ToList(),  // Adicionando TestesIds
-                    DocumentosIds: missao.Documentos.Select(d => d.Id).ToList(),  // Adicionando DocumentosIds
-                    LicencasIds: missao.Licencas.Select(l => l.Id).ToList(),  // Adicionando LicencasIds
-                    Id: missao.Id
-                )).ToList();
+                var missoesDto = new List<MissaoDto>();
+
+                foreach (var missao in missoes)
+                {
+                    var missaoLicencas = await context.MissaoLicencas
+                                                      .Where(m => m.MissaoId == missao.Id)
+                                                      .Select(m => m.LicencaId)
+                                                      .ToListAsync();
+
+                    var missaoDto = new MissaoDto(
+                        Codinome: missao.Codinome,
+                        Descricao: missao.Descricao,
+                        TipoMissao: missao.TipoMissao,
+                        Objetivo: missao.Objetivo,
+                        StatusMissao: missao.StatusMissao,
+                        DuracaoEstimada: missao.DuracaoEstimada,
+                        CustoEstimado: missao.CustoEstimado,
+                        DataInicio: missao.DataInicio,
+                        DataTermino: missao.DataTermino,
+                        VeiculoId: missao.VeiculoId,
+                        PlataformaId: missao.PlataformaId,
+                        EquipeId: missao.EquipeId,
+                        MissaoLicencas: missaoLicencas,
+                        Id: missao.Id
+                    );
+
+                    missoesDto.Add(missaoDto);
+                }
 
                 return Results.Ok(missoesDto);
             });
+
+            // // L I S T A R   L I C E N Ç A S
+            // group.MapGet("/listar-missao-licencas/{missaoId}", async ([FromServices] ApplicationDbContext context, Guid missaoId) =>
+            // {
+            //     // Verifica se a missão existe
+            //     var missaoLicencas = await context.MissaoLicencas
+            //                                       //   .Include(ml => ml.Licenca)  // Inclui as informações da Licenca associada
+            //                                       .Where(ml => ml.MissaoId == missaoId)
+            //                                       .ToListAsync();
+
+            //     if (!missaoLicencas.Any())
+            //     {
+            //         return Results.NotFound("Não há licenças associadas a essa missão.");
+            //     }
+
+            //     // Mapeia os dados das licenças associadas à missão
+            //     var missaoLicencasDto = missaoLicencas.Select(ml => new LicencaDto
+            //     (
+            //         missaoLicencasDto.Id
+            //     )
+            //     {
+            //         MissaoLicencaId = ml.Id,  // ID da relação MissaoLicenca
+            //         LicencaId = ml.LicencaId, // ID da Licença
+            //         TipoLicenca = ml.Licenca.TipoLicenca,
+            //         NomeLicenca = ml.Licenca.Nome,
+            //         NumeroLicenca = ml.Licenca.NumeroLicenca,
+            //         OrgaoEmissor = ml.Licenca.OrgaoEmissor,
+            //         DataEmissao = ml.Licenca.DataEmissao,
+            //         DataValidade = ml.Licenca.DataValidade
+            //     }).ToList();
+
+            //     return Results.Ok(missaoLicencasDto);
+            // });
 
             // A T U A L I Z A R
             group.MapPatch("/atualizar/{id}", async ([FromServices] ApplicationDbContext context, Guid id, [FromBody] MissaoDto missaoAtualizada) =>
@@ -214,10 +255,7 @@ namespace ProjetosEspaciais.Modules
                     missaoAtualizada.DuracaoEstimada,
                     missaoAtualizada.CustoEstimado,
                     missaoAtualizada.DataInicio,
-                    missaoAtualizada.DataTermino,
-                    missaoAtualizada.TestesIds,   // Lista de Testes (Agora usando List<Guid>)
-                    missaoAtualizada.DocumentosIds, // Lista de Documentos (Agora usando List<Guid>)
-                    missaoAtualizada.LicencasIds   // Lista de Licenças (Agora usando List<Guid>)
+                    missaoAtualizada.DataTermino
                 );
 
                 await context.SaveChangesAsync();
@@ -236,8 +274,12 @@ namespace ProjetosEspaciais.Modules
                     return Results.NotFound("Missão não encontrada.");
                 }
 
-                context.Missoes.Remove(missao);
+                missao = Missao.Deletar(missao);
+
                 await context.SaveChangesAsync();
+
+                // context.Missoes.Remove(missao);
+                // await context.SaveChangesAsync();
 
                 return Results.NoContent();
             });

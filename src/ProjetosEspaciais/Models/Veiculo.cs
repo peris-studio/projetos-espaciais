@@ -15,6 +15,7 @@ public class Veiculo
     public TipoVeiculo TipoVeiculo { get; set; }
     public TipoCombustivel TipoCombustivel { get; set; }
     public TipoTransmissao TipoTransmissao { get; set; }
+    public StatusVeiculo StatusVeiculo { get; set; }
     public required string Capacidade { get; set; }
     public string? EspecificacaoTecnicaExtra { get; set; }
     public DateTime DataCriacao { get; set; }
@@ -32,12 +33,13 @@ public class Veiculo
                                   TipoVeiculo tipoVeiculo,
                                   TipoCombustivel tipoCombustivel,
                                   TipoTransmissao tipoTransmissao,
+                                  StatusVeiculo statusVeiculo,
                                   string capacidade,
                                   string especificacaoTecnicaExtra)
     {
         // Valida os campos obrigatórios
         ValidarCamposObrigatorios(nome, placa, marca, modelo, ano, cor, capacidade);
-        ValidarEnums(tipoVeiculo, tipoCombustivel, tipoTransmissao);
+        ValidarEnums(tipoVeiculo, tipoCombustivel, tipoTransmissao, statusVeiculo);
 
         return new Veiculo
         {
@@ -69,12 +71,13 @@ public class Veiculo
                                     TipoVeiculo tipoVeiculo,
                                     TipoCombustivel tipoCombustivel,
                                     TipoTransmissao tipoTransmissao,
+                                    StatusVeiculo statusVeiculo,
                                     string capacidade,
                                     string especificacaoTecnicaExtra)
     {
         // Valida os campos obrigatórios
         ValidarCamposObrigatorios(nome, placa, marca, modelo, ano, cor, capacidade);
-        ValidarEnums(tipoCombustivel, tipoTransmissao);
+        ValidarEnums(tipoCombustivel, tipoTransmissao, statusVeiculo);
 
         // Atualiza os valores do veículo
         veiculo.Nome = nome;
@@ -86,6 +89,7 @@ public class Veiculo
         veiculo.TipoVeiculo = tipoVeiculo;
         veiculo.TipoCombustivel = tipoCombustivel;
         veiculo.TipoTransmissao = tipoTransmissao;
+        veiculo.StatusVeiculo = statusVeiculo;
         veiculo.Capacidade = capacidade;
         veiculo.EspecificacaoTecnicaExtra = especificacaoTecnicaExtra;
         veiculo.DataAtualizacao = DateTime.UtcNow;
@@ -150,6 +154,7 @@ public class Veiculo
                 Tipo de Veículo: {TipoVeiculo}
                 Tipo de Combustível: {TipoCombustivel}
                 Tipo de Transmissão: {TipoTransmissao}
+                Status do Veículo: {StatusVeiculo}
                 Capacidade: {Capacidade}
                 Especificação Técnica Extra: {EspecificacaoTecnicaExtra}
                 Data de Criação: {DataCriacao}

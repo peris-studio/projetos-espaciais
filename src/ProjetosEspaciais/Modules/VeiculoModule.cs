@@ -54,6 +54,7 @@ public static class VeiculoModule
                     novoVeiculo.TipoVeiculo,
                     novoVeiculo.TipoCombustivel,
                     novoVeiculo.TipoTransmissao,
+                    novoVeiculo.StatusVeiculo,
                     novoVeiculo.Capacidade,
                     novoVeiculo.EspecificacaoTecnicaExtra
                 );
@@ -99,6 +100,7 @@ public static class VeiculoModule
                 TipoVeiculo: veiculo.TipoVeiculo,
                 TipoCombustivel: veiculo.TipoCombustivel,
                 TipoTransmissao: veiculo.TipoTransmissao,
+                StatusVeiculo: veiculo.StatusVeiculo,
                 Capacidade: veiculo.Capacidade,
                 EspecificacaoTecnicaExtra: veiculo.EspecificacaoTecnicaExtra ?? "nulo",
                 Id: veiculo.Id
@@ -121,6 +123,7 @@ public static class VeiculoModule
                 Cor: veiculo.Cor,
                 TipoVeiculo: veiculo.TipoVeiculo,
                 TipoCombustivel: veiculo.TipoCombustivel,
+                StatusVeiculo: veiculo.StatusVeiculo,
                 TipoTransmissao: veiculo.TipoTransmissao,
                 Capacidade: veiculo.Capacidade,
                 EspecificacaoTecnicaExtra: veiculo.EspecificacaoTecnicaExtra ?? "nulo",
@@ -151,6 +154,7 @@ public static class VeiculoModule
                 veiculoAtualizado.TipoVeiculo,
                 veiculoAtualizado.TipoCombustivel,
                 veiculoAtualizado.TipoTransmissao,
+                veiculoAtualizado.StatusVeiculo,
                 veiculoAtualizado.Capacidade,
                 veiculoAtualizado.EspecificacaoTecnicaExtra
             );

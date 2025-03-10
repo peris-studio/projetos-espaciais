@@ -16,71 +16,28 @@ CREATE TABLE public."Missoes" (
     "VeiculoId" UUID NOT NULL,
     "PlataformaId" UUID NOT NULL,
     "EquipeId" UUID NOT NULL,
-    "LicencasIds" UUID[] NOT NULL,  -- Array de Licenças
     CONSTRAINT "FK_Veiculos" FOREIGN KEY ("VeiculoId") REFERENCES public."Veiculos"("Id"),
     CONSTRAINT "FK_Plataformas" FOREIGN KEY ("PlataformaId") REFERENCES public."Plataformas"("Id"),
     CONSTRAINT "FK_Equipes" FOREIGN KEY ("EquipeId") REFERENCES public."Equipes"("Id")
 );
 
--- Inserir 5 missões espaciais com diferentes dados
-INSERT INTO public."Missoes" (
-    "Id", "Codinome", "Descricao", "TipoMissao", "Objetivo", "StatusMissao", 
-    "DuracaoEstimada", "CustoEstimado", "DataInicio", "DataTermino", 
-    "DataCriacao", "DataAtualizacao", "DataDelecao", "Ativo", "VeiculoId", 
-    "PlataformaId", "EquipeId", "LicencasIds"
-) 
-VALUES 
-    -- Missão 1
-    ('60cc1b17-6bf7-4058-9c0e-7ce194d3559d', 'MissaoSideralis', 
-     'Missão de exploração interplanetária para Marte.', 1, 
-     'Explorar a viabilidade de colonização em Marte e realizar testes de terraformação.', 
-     1, '12 meses', 100000000.00, '2025-06-01', '2026-06-01', 
-     CURRENT_TIMESTAMP, NULL, NULL, TRUE, 
-     '60cc1b17-6bf7-4058-9c0e-7ce194d3559d', 
-     'f2dd29b7-8592-4166-9f09-fb57dd1cb83d', 
-     '257c9a52-f4b7-4e29-af5e-7406ff11c6e2',
-     '{257c9a52-f4b7-4e29-af5e-7406ff11c6e2, 60cc1b17-6bf7-4058-9c0e-7ce194d3559d}'),
-     
-    -- Missão 2
-    ('b92e9f1e-01f6-44d1-9baf-d5701df58de5', 'MissaoGalaxia', 
-     'Exploração do sistema estelar Alpha Centauri.', 2, 
-     'Investigar a possibilidade de vida fora do nosso sistema solar.', 
-     1, '18 meses', 200000000.00, '2025-09-01', '2027-03-01', 
-     CURRENT_TIMESTAMP, NULL, NULL, TRUE, 
-     'd4a1d29a-6b43-4081-8f7e-9bb9d1b70f94', 
-     'f2dd29b7-8592-4166-9f09-fb57dd1cb83d', 
-     '257c9a52-f4b7-4e29-af5e-7406ff11c6e2',
-     '{60cc1b17-6bf7-4058-9c0e-7ce194d3559d, 4a2cb3f2-d724-4a5e-a1a6-0d8b238fc179}'),
-     
-    -- Missão 3
-    ('7a1b17f8-5c56-4c9d-98b3-4a89d587c211', 'MissaoJupiter', 
-     'Exploração de luas de Júpiter.', 3, 
-     'Realizar uma análise de possíveis habitats em luas de Júpiter.', 
-     1, '24 meses', 150000000.00, '2026-01-01', '2027-12-01', 
-     CURRENT_TIMESTAMP, NULL, NULL, TRUE, 
-     '9f8d08ab-9372-4d32-89fb-3a618eb7f1ef', 
-     'af33b237-44a2-47f5-a813-e143d3c4551f', 
-     '257c9a52-f4b7-4e29-af5e-7406ff11c6e2',
-     '{4a2cb3f2-d724-4a5e-a1a6-0d8b238fc179, 5a1c92a7-cae7-4a3b-a87f-8b8bbd19c312}'),
-     
-    -- Missão 4
-    ('3a94117e-06e3-4cc9-9f39-0c372d2b960f', 'MissaoLuar', 
-     'Exploração de crateras lunares.', 4, 
-     'Estudar as formações geológicas na Lua e avaliar recursos naturais.', 
-     1, '6 meses', 50000000.00, '2025-12-01', '2026-06-01', 
-     CURRENT_TIMESTAMP, NULL, NULL, TRUE, 
-     '7a17f8c2-9d0c-4a29-9ab7-9a7bbf1f28b5', 
-     'c9a9e8e3-9c75-408d-bb26-33a1bcb725eb', 
-     '257c9a52-f4b7-4e29-af5e-7406ff11c6e2',
-     '{257c9a52-f4b7-4e29-af5e-7406ff11c6e2}'),
+INSERT INTO public."Missoes" ("Id", "Codinome", "Descricao", "TipoMissao", "Objetivo", 
+                              "StatusMissao", "DuracaoEstimada", "CustoEstimado", "DataInicio", 
+                              "DataTermino", "DataCriacao", "DataAtualizacao", "DataDelecao", 
+                              "Ativo", "VeiculoId", "PlataformaId", "EquipeId") 
+VALUES
+    ('c8a24d9f-8f5f-4f2f-bbe9-f4c28a7b9a26', 'M1', 'Missão para enviar uma nave até a órbita de Marte', 1, 
+     'Explorar a superfície de Marte e coletar dados científicos.', 1, '12 meses', 500000000, '2025-06-01', 
+     '2026-06-01', CURRENT_TIMESTAMP, NULL, NULL, TRUE, '7b3c948d-09ef-4639-adfc-86476c30467a', 'f2dd29b7-8592-4166-9f09-fb57dd1cb83d', 'a96cfdd9-ce1e-41e7-9483-1691e87c8780'),
 
-    -- Missão 5
-    ('a4b94a62-cf89-4d27-b7b2-9f547f88b428', 'MissaoCometa', 
-     'Missão de coleta de amostras de cometas.', 5, 
-     'Analisar a composição química de um cometa próximo à Terra.', 
-     1, '9 meses', 120000000.00, '2026-02-01', '2026-11-01', 
-     CURRENT_TIMESTAMP, NULL, NULL, TRUE, 
-     '9d0e5d91-3bc9-4c16-9f6f-9b83b848810b', 
-     '94bb6c0f-c1da-4b76-8469-ff4b3e5068d6', 
-     '257c9a52-f4b7-4e29-af5e-7406ff11c6e2',
-     '{60cc1b17-6bf7-4058-9c0e-7ce194d3559d, 4a2cb3f2-d724-4a5e-a1a6-0d8b238fc179}');
+    ('d8e6f5a1-4a65-4062-9251-70f729309227', 'M2', 'Missão de teste para enviar veículo ao espaço profundo', 2, 
+     'Testar a viabilidade de viagens interplanetárias e estabelecer comunicação constante.', 2, '24 meses', 100000000, '2025-07-15', 
+     '2027-07-15', CURRENT_TIMESTAMP, NULL, NULL, TRUE, '104af408-deb3-4cc4-b06d-90a21dc82db3', 'f2dd29b7-8592-4166-9f09-fb57dd1cb83d', 'ac1131b5-ccd1-46ef-9a07-05868e8d46a3'),
+
+    ('b4f9a5d7-3b85-4f1e-b5f0-158e21e89d60', 'M3', 'Missão de exploração de satélite natural de Saturno', 3, 
+     'Estudar as condições de atmosfera e geologia de Titã, uma das luas de Saturno.', 3, '36 meses', 75000000, '2025-08-01', 
+     '2028-08-01', CURRENT_TIMESTAMP, NULL, NULL, TRUE, '65a7e587-e47c-45bb-a824-30573f99b334', '257c9a52-f4b7-4e29-af5e-7406ff11c6e2', '97dbd619-ae50-4a3e-ac97-926b95f251c2'),
+
+    ('4ea65a78-cd3f-4a4c-88c1-114fe88922fe', 'M4', 'Missão de reparo e manutenção de satélites de comunicação', 4, 
+     'Manter e melhorar a rede de satélites de comunicação em órbita.', 4, '6 meses', 200000000, '2025-09-01', 
+     '2026-03-01', CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'e018efb6-491e-4222-b263-a1aba374d46d', 'a999c838-0c75-4d70-8f64-d560cac90965', 'a96cfdd9-ce1e-41e7-9483-1691e87c8780');

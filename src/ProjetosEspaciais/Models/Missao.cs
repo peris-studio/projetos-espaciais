@@ -24,11 +24,7 @@ public class Missao
     public Plataforma Plataforma { get; set; } = null!;
     public Guid EquipeId { get; set; }
     public Equipe Equipe { get; set; } = null!;
-
-    // Listas de entidades relacionadas
-    public ICollection<Teste> Testes { get; set; } = new List<Teste>();
-    public ICollection<Documento> Documentos { get; set; } = new List<Documento>();
-    public ICollection<Licenca> Licencas { get; set; } = new List<Licenca>();
+    public List<Guid> MissaoLicencas { get; set; } = [];
 
     public static Missao Inserir(string codinome,
                                  string descricao,
@@ -38,13 +34,11 @@ public class Missao
                                  string duracaoEstimada,
                                  decimal custoEstimado,
                                  DateOnly dataInicio,
-                                 DateOnly dataTermino,
+                                 DateOnly? dataTermino,
                                  Guid veiculoId,
                                  Guid plataformaId,
                                  Guid equipeId,
-                                 List<Guid>? testesIds = null,
-                                 List<Guid>? documentosIds = null,
-                                 List<Guid>? licencasIds = null,
+                                 List<Guid>? missaoLicencas = null,
                                  Guid id = default)
     {
         ValidarCampoObrigatorio(codinome, nameof(codinome));
@@ -72,9 +66,7 @@ public class Missao
             VeiculoId = veiculoId,
             PlataformaId = plataformaId,
             EquipeId = equipeId,
-            Testes = testesIds?.Select(tid => new Teste { Id = tid }).ToList() ?? new List<Teste>(),
-            Documentos = documentosIds?.Select(did => new Documento { Id = did }).ToList() ?? new List<Documento>(),
-            Licencas = licencasIds?.Select(lid => new Licenca { Id = lid }).ToList() ?? new List<Licenca>()
+            MissaoLicencas = missaoLicencas ?? []
         };
     }
 
@@ -87,10 +79,7 @@ public class Missao
                                    string duracaoEstimada,
                                    decimal custoEstimado,
                                    DateOnly dataInicio,
-                                   DateOnly? dataTermino,
-                                   List<Guid>? testesIds,
-                                   List<Guid>? documentosIds,
-                                   List<Guid>? licencasIds)
+                                   DateOnly? dataTermino)
     {
         ValidarCampoObrigatorio(codinome, nameof(codinome));
         ValidarCampoObrigatorio(descricao, nameof(descricao));
@@ -109,17 +98,10 @@ public class Missao
         missao.CustoEstimado = custoEstimado;
         missao.DataInicio = dataInicio;
         missao.DataTermino = dataTermino;
-        missao.DataTermino = dataTermino;
         missao.DataAtualizacao = DateTime.UtcNow;
-
-        // Atualiza as listas de IDs
-        missao.Testes = testesIds?.Select(tid => new Teste { Id = tid }).ToList() ?? new List<Teste>();
-        missao.Documentos = documentosIds?.Select(did => new Documento { Id = did }).ToList() ?? new List<Documento>();
-        missao.Licencas = licencasIds?.Select(lid => new Licenca { Id = lid }).ToList() ?? new List<Licenca>();
 
         return missao;
     }
-
 
     public static Missao Deletar(Missao missao)
     {
@@ -142,13 +124,13 @@ public class Missao
         }
 
         missao.Ativo = true;
-        missao.DataDelecao = null; // Limpa a data de deleção
-        missao.DataAtualizacao = DateTime.UtcNow; // Atualiza a data de atualização
+        missao.DataDelecao = null;
+        missao.DataAtualizacao = DateTime.UtcNow;
 
         return missao;
     }
 
-    // Método para validar campos obrigatórios
+    // Validações
     public static void ValidarCampoObrigatorio(string valor, string nomeCampo)
     {
         if (string.IsNullOrWhiteSpace(valor))
@@ -157,11 +139,10 @@ public class Missao
         }
     }
 
-    // Método para validar enums
     public static void ValidarEnumObrigatorio<TEnum>(TEnum valor, string nomeCampo)
         where TEnum : Enum
     {
-        if (valor == null || !Enum.IsDefined(typeof(TEnum), valor))
+        if (!Enum.IsDefined(typeof(TEnum), valor))
         {
             throw new ArgumentException($"O valor do campo '{nomeCampo}' não é válido para o enum {typeof(TEnum).Name}.");
         }
@@ -176,13 +157,10 @@ public class Missao
             Tipo de Missão: {TipoMissao}
             Objetivo: {Objetivo}
             Status: {StatusMissao}
+            Duração Estimada: {DuracaoEstimada}
             Veículo: {VeiculoId}
             Plataforma: {PlataformaId}
             Equipe Responsável: {EquipeId}
-            Testes: [{string.Join(", ", Testes.Select(t => t.Id))}]
-            Documentos: [{string.Join(", ", Documentos.Select(d => d.Id))}]
-            Licenças: [{string.Join(", ", Licencas.Select(l => l.Id))}]
-            Duração Estimada: {DuracaoEstimada}
             Custo Estimado: {CustoEstimado}
             Data de Início: {DataInicio}
             Data de Término: {DataTermino}

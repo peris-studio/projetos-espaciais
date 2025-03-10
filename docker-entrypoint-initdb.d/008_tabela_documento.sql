@@ -10,12 +10,11 @@ CREATE TABLE public."Documentos" (
     "Ativo" BOOLEAN NOT NULL,
     "EquipeId" UUID NOT NULL,
     CONSTRAINT "FK_Equipes" FOREIGN KEY ("EquipeId") REFERENCES public."Equipes"("Id")
-)
+); -- Ponto e vírgula adicionado aqui
 
 INSERT INTO public."Documentos" ("Id", "Titulo", "TipoDocumento", "Versao", "ClassificacaoSegurancaDocumento", "DataCriacao", "DataAtualizacao", "DataDelecao", "Ativo", "EquipeId")
 VALUES
-    ('60cc1b17-6bf7-4058-9c0e-7ce194d3559d', 'Relatório de Lançamento do Falcon 9', 1, 'v1.0', 3, CURRENT_TIMESTAMP, NULL, NULL, TRUE, '60cc1b17-6bf7-4058-9c0e-7ce194d3559d'),
-    ('4c6fb5e9-8073-4bfe-8095-49c173108983', 'Estudo de Viabilidade para Missão em Marte', 2, 'v2.1', 2, CURRENT_TIMESTAMP, NULL, NULL, TRUE, '4c6fb5e9-8073-4bfe-8095-49c173108983'),
-    ('f2dd29b7-8592-4166-9f09-fb57dd1cb83d', 'Plano de Pesquisa Científica para Exploração Lunar', 3, 'v1.2', 1, CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'f2dd29b7-8592-4166-9f09-fb57dd1cb83d'),
-    ('a999c838-0c75-4d70-8f64-d560cac90965', 'Documento de Aprovação de Tecnologia Avançada para Missões', 4, 'v3.0', 4, CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'a999c838-0c75-4d70-8f64-d560cac90965'),
-    ('257c9a52-f4b7-4e29-af5e-7406ff11c6e2', 'Licença Ambiental para Testes de Propulsão Espacial', 5, 'v1.0', 5, CURRENT_TIMESTAMP, NULL, NULL, TRUE, '257c9a52-f4b7-4e29-af5e-7406ff11c6e2');
+    ('dd7a20dd-75a3-4b6f-999e-bbf8b91ef3c7', 'Relatório de Lançamento do Falcon 9', 1, 'v1.0', 3, CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'a96cfdd9-ce1e-41e7-9483-1691e87c8780'),
+    ('9b51684b-ff3d-44fe-94e2-df82a318e903', 'Estudo de Viabilidade para Missão em Marte', 2, 'v2.1', 2, CURRENT_TIMESTAMP, NULL, NULL, TRUE, '97dbd619-ae50-4a3e-ac97-926b95f251c2'),
+    ('bc426fea-045f-48af-9995-c7cb14dd9aa5', 'Plano de Pesquisa Científica para Exploração Lunar', 3, 'v1.2', 1, CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'ac1131b5-ccd1-46ef-9a07-05868e8d46a3'),
+    ('f4ccce28-b3be-45e6-959e-62d8797d38bc', 'Licença Ambiental para Testes de Propulsão Espacial', 5, 'v1.0', 3, CURRENT_TIMESTAMP, NULL, NULL, TRUE, 'ac1131b5-ccd1-46ef-9a07-05868e8d46a3');
