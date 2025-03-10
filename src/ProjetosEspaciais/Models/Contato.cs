@@ -4,7 +4,7 @@ namespace ProjetosEspaciais.Models
     {
         public Guid Id { get; set; }
         public TipoContato TipoContato { get; set; }
-        public required string EnderecoContato { get; set; }
+        public string EnderecoContato { get; set; }
         public bool Principal { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime? DataAtualizacao { get; set; }

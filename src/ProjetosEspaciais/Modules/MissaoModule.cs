@@ -77,13 +77,6 @@ namespace ProjetosEspaciais.Modules
                         return Results.BadRequest("Equipe não encontrada.");
                     }
 
-                    // novaMissao = novaMissao with
-                    // {
-                    //     TestesIds = novaMissao.TestesIds ?? new List<Guid>(),
-                    //     DocumentosIds = novaMissao.DocumentosIds ?? new List<Guid>(),
-                    //     LicencasIds = novaMissao.LicencasIds ?? new List<Guid>()
-                    // };
-
                     var missao = Missao.Inserir(
                         novaMissao.Codinome,
                         novaMissao.Descricao,

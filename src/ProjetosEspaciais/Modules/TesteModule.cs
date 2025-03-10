@@ -138,9 +138,9 @@ public static class TesteModule
 
                 // Chamada ao método Atualizar, passando os valores do DTO
                 teste.Atualizar(testeAtualizado.Objetivo,
-                                testeAtualizado.Resultado ?? "",
-                                testeAtualizado.EquipamentoUtilizado ?? "Equipamento não especificado",  // Definindo um valor default para EquipamentoUtilizado
-                                testeAtualizado.ConclusaoRecomendacao ?? "Conclusão não especificada",  // Valor default para ConclusaoRecomendacao, se necessário
+                                testeAtualizado.Resultado,
+                                testeAtualizado.EquipamentoUtilizado,
+                                testeAtualizado.ConclusaoRecomendacao,
                                 testeAtualizado.EquipeId,
                                 testeAtualizado.PlataformaId
                 );

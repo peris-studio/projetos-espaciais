@@ -6,8 +6,8 @@ using ProjetosEspaciais.Enums;
 public class Projeto
 {
     public Guid Id { get; set; }
-    public required string Nome { get; set; }
-    public required string Descricao { get; set; }
+    public string Nome { get; set; }
+    public string Descricao { get; set; }
     public StatusProjeto StatusProjeto { get; set; }
     public DateOnly DataInicio { get; set; }
     public DateOnly DataTermino { get; set; }
@@ -15,7 +15,7 @@ public class Projeto
     public FaseAtual FaseAtual { get; set; }
     public Guid GerenteTorreId { get; set; }
     public Guid MissaoId { get; set; }
-    public Missao? Missao { get; set; }
+    public Missao Missao { get; set; }
     public List<Missao> Missoes { get; set; } = new List<Missao>();
     public DateTime DataCriacao { get; set; }
     public DateTime? DataAtualizacao { get; set; }

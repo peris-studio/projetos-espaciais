@@ -6,11 +6,11 @@ namespace ProjetosEspaciais.Models;
 public class Localidade
 {
     public Guid Id { get; set; }
-    public required string Sede { get; set; }
-    public required string Cidade { get; set; }
-    public required string Estado { get; set; }
-    public required string Pais { get; set; }
-    public required string EnderecoCompleto { get; set; }
+    public string Sede { get; set; }
+    public string Cidade { get; set; }
+    public string Estado { get; set; }
+    public string Pais { get; set; }
+    public string EnderecoCompleto { get; set; }
     public DateTime DataCriacao { get; set; }
     public DateTime? DataAtualizacao { get; set; }
     public DateTime? DataDelecao { get; set; }

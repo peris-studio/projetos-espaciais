@@ -3,8 +3,8 @@ namespace ProjetosEspaciais.Models
     public class Equipe
     {
         public Guid Id { get; set; }
-        public required string Codinome { get; set; }
-        public required string Funcao { get; set; }
+        public string Codinome { get; set; }
+        public string Funcao { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime? DataAtualizacao { get; set; }
         public DateTime? DataDelecao { get; set; }
@@ -12,7 +12,7 @@ namespace ProjetosEspaciais.Models
         public Guid ContatoId { get; set; }
         public Contato Contato { get; set; }
         public ICollection<Membro> Membros { get; set; } = new List<Membro>();
-        public Guid? LiderId { get; set; }
+        public Guid LiderId { get; set; }
         public Membro Lider { get; set; }
 
         public static Equipe Inserir(string codinome, string funcao, Guid contatoId, Guid? liderId = null, Guid id = default)
@@ -40,7 +40,7 @@ namespace ProjetosEspaciais.Models
             return equipe;
         }
 
-        public static Equipe Atualizar(Equipe equipe, string codinome, string funcao, Guid contatoId, Guid? liderId = null)
+        public static Equipe Atualizar(Equipe equipe, string codinome, string funcao, Guid contatoId, Guid liderId)
         {
             if (equipe == null)
             {

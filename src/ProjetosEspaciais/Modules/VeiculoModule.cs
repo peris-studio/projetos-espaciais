@@ -102,7 +102,7 @@ public static class VeiculoModule
                 TipoTransmissao: veiculo.TipoTransmissao,
                 StatusVeiculo: veiculo.StatusVeiculo,
                 Capacidade: veiculo.Capacidade,
-                EspecificacaoTecnicaExtra: veiculo.EspecificacaoTecnicaExtra ?? "nulo",
+                EspecificacaoTecnicaExtra: veiculo.EspecificacaoTecnicaExtra,
                 Id: veiculo.Id
             );
 
@@ -126,7 +126,7 @@ public static class VeiculoModule
                 StatusVeiculo: veiculo.StatusVeiculo,
                 TipoTransmissao: veiculo.TipoTransmissao,
                 Capacidade: veiculo.Capacidade,
-                EspecificacaoTecnicaExtra: veiculo.EspecificacaoTecnicaExtra ?? "nulo",
+                EspecificacaoTecnicaExtra: veiculo.EspecificacaoTecnicaExtra,
                 Id: veiculo.Id
             )).ToList();
 

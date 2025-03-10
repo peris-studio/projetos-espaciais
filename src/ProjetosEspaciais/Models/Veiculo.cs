@@ -6,18 +6,18 @@ using System;
 public class Veiculo
 {
     public Guid Id { get; set; }
-    public required string Nome { get; set; }
-    public required string Placa { get; set; }
-    public required string Marca { get; set; }
-    public required string Modelo { get; set; }
-    public required string Ano { get; set; }
-    public required string Cor { get; set; }
+    public string Nome { get; set; }
+    public string Placa { get; set; }
+    public string Marca { get; set; }
+    public string Modelo { get; set; }
+    public string Ano { get; set; }
+    public string Cor { get; set; }
     public TipoVeiculo TipoVeiculo { get; set; }
     public TipoCombustivel TipoCombustivel { get; set; }
     public TipoTransmissao TipoTransmissao { get; set; }
     public StatusVeiculo StatusVeiculo { get; set; }
-    public required string Capacidade { get; set; }
-    public string? EspecificacaoTecnicaExtra { get; set; }
+    public string Capacidade { get; set; }
+    public string EspecificacaoTecnicaExtra { get; set; }
     public DateTime DataCriacao { get; set; }
     public DateTime? DataAtualizacao { get; set; }
     public DateTime? DataDelecao { get; set; }

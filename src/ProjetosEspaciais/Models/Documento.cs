@@ -5,9 +5,9 @@ using ProjetosEspaciais.Enums;
 public class Documento
 {
     public Guid Id { get; set; }
-    public string? Titulo { get; set; }
+    public string Titulo { get; set; }
     public TipoDocumento TipoDocumento { get; set; }
-    public string? Versao { get; set; }
+    public string Versao { get; set; }
     public ClassificacaoSegurancaDocumento ClassificacaoSegurancaDocumento { get; set; }
     public StatusDocumento StatusDocumento { get; set; }
     public Guid EquipeId { get; set; }

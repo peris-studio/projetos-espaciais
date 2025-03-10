@@ -5,15 +5,15 @@ using ProjetosEspaciais.Enums;
 public class Missao
 {
     public Guid Id { get; set; }
-    public required string Codinome { get; set; }
-    public required string Descricao { get; set; }
+    public string Codinome { get; set; }
+    public string Descricao { get; set; }
     public TipoMissao TipoMissao { get; set; }
-    public required string Objetivo { get; set; }
+    public string Objetivo { get; set; }
     public StatusMissao StatusMissao { get; set; }
-    public required string DuracaoEstimada { get; set; }
+    public string DuracaoEstimada { get; set; }
     public decimal CustoEstimado { get; set; }
     public DateOnly DataInicio { get; set; }
-    public DateOnly? DataTermino { get; set; }
+    public DateOnly DataTermino { get; set; }
     public DateTime DataCriacao { get; set; }
     public DateTime? DataAtualizacao { get; set; }
     public DateTime? DataDelecao { get; set; }
@@ -34,7 +34,7 @@ public class Missao
                                  string duracaoEstimada,
                                  decimal custoEstimado,
                                  DateOnly dataInicio,
-                                 DateOnly? dataTermino,
+                                 DateOnly dataTermino,
                                  Guid veiculoId,
                                  Guid plataformaId,
                                  Guid equipeId,
@@ -79,7 +79,7 @@ public class Missao
                                    string duracaoEstimada,
                                    decimal custoEstimado,
                                    DateOnly dataInicio,
-                                   DateOnly? dataTermino)
+                                   DateOnly dataTermino)
     {
         ValidarCampoObrigatorio(codinome, nameof(codinome));
         ValidarCampoObrigatorio(descricao, nameof(descricao));

@@ -6,11 +6,11 @@ public class Teste
 {
     public Guid Id { get; set; }
     public TipoTeste TipoTeste { get; set; }
-    public string? Objetivo { get; set; }
+    public string Objetivo { get; set; }
     public DateOnly DataRealizacao { get; set; }
-    public string? Resultado { get; set; }
-    public string? EquipamentoUtilizado { get; set; }
-    public string? ConclusaoRecomendacao { get; set; }
+    public string Resultado { get; set; }
+    public string EquipamentoUtilizado { get; set; }
+    public string ConclusaoRecomendacao { get; set; }
     public DateTime DataCriacao { get; set; }
     public DateTime? DataAtualizacao { get; set; }
     public DateTime? DataDelecao { get; set; }

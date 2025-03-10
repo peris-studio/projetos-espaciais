@@ -5,11 +5,11 @@ using ProjetosEspaciais.Enums;
 public class Membro
 {
     public Guid Id { get; set; }
-    public required string NomeCompleto { get; set; }
-    public required string Funcao { get; set; }
-    public required string Especialidade { get; set; }
-    public required string Identificador { get; set; }
-    public required string Senha { get; set; }
+    public string NomeCompleto { get; set; }
+    public string Funcao { get; set; }
+    public string Especialidade { get; set; }
+    public string Identificador { get; set; }
+    public string Senha { get; set; }
     public Genero Genero { get; set; }
     public DateOnly DataNascimento { get; set; }
     public DateTime DataCriacao { get; set; }
