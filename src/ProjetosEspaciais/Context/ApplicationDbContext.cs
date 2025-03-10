@@ -22,6 +22,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Documento> Documentos { get; set; } = null!;
     public DbSet<Teste> Testes { get; set; } = null!;
     public DbSet<Missao> Missoes { get; set; } = null!;
+    public DbSet<MissaoLicencas> MissaoLicencas { get; set; }
     public DbSet<Projeto> Projetos { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,6 +40,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfiguration(new DocumentoMap());
         modelBuilder.ApplyConfiguration(new TesteMap());
         modelBuilder.ApplyConfiguration(new MissaoMap());
+        modelBuilder.ApplyConfiguration(new MissaoLicencasMap());
         modelBuilder.ApplyConfiguration(new ProjetoMap());
 
         // Filtro automático para só trazer registros ativos
@@ -52,6 +54,7 @@ public class ApplicationDbContext : DbContext
         modelBuilder.Entity<Documento>().HasQueryFilter(x => x.Ativo);
         modelBuilder.Entity<Teste>().HasQueryFilter(x => x.Ativo);
         modelBuilder.Entity<Missao>().HasQueryFilter(x => x.Ativo);
+        modelBuilder.Entity<MissaoLicencas>().HasQueryFilter(x => x.Ativo);
         modelBuilder.Entity<Projeto>().HasQueryFilter(x => x.Ativo);
 
         // para buscar inativos, use .IgnoreQueryFilters()

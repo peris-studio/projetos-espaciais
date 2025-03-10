@@ -9,6 +9,7 @@ public record VeiculoDto(string Nome,
                          TipoVeiculo TipoVeiculo,
                          TipoCombustivel TipoCombustivel,
                          TipoTransmissao TipoTransmissao,
+                         StatusVeiculo StatusVeiculo,
                          string Capacidade,
                          string EspecificacaoTecnicaExtra,
                          Guid Id = default);

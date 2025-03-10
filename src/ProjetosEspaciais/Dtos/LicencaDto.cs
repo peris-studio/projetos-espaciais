@@ -7,4 +7,5 @@ public record LicencaDto(TipoLicenca TipoLicenca,
                          DateOnly DataEmissao,
                          DateOnly DataValidade,
                          string RequisitoConformidade,
+                         List<Guid>? MissaoLicencas,
                          Guid Id = default);

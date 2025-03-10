@@ -12,7 +12,5 @@ public record MissaoDto(string Codinome,
                         Guid VeiculoId,
                         Guid PlataformaId,
                         Guid EquipeId,
-                        List<Guid> TestesIds,
-                        List<Guid> DocumentosIds,
-                        List<Guid> LicencasIds,
+                        List<Guid>? MissaoLicencas,
                         Guid Id = default);
